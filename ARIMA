@@ -18,7 +18,7 @@ def ARIMA(phi = np.array([0]), theta = np.array([0]), d = 0, t = 0, mu = 0, sigm
     Return:
     x -- simulated ARMA process of shape (n, 1)
 
-    Note:
+    Reference:
     Model reference is Time Series Analysis by Box et al.
     """
 
