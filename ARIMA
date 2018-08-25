@@ -3,7 +3,7 @@ def ARIMA(phi = np.array([0]), theta = np.array([0]), d = 0, t = 0, mu = 0, sigm
 
     z_t = phi_1*z_{t-1} + ... + phi_p*z_{t-p} + a_t + theta_1*a_{t-1} + ... + theta_q*a_{t-q}
 
-    with oprtional d unit roots for ARIMA model.
+    with d unit roots for ARIMA model.
 
     Arguments:
     phi -- array of shape (p,) or (p, 1) containing phi_1, phi2, ... for AR model
