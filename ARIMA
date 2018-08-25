@@ -18,8 +18,11 @@ def ARIMA(phi = np.array([0]), theta = np.array([0]), d = 0, t = 0, mu = 0, sigm
     Return:
     x -- simulated ARMA process of shape (n, 1)
 
+    Note:
+    
+
     Reference:
-    Model reference is Time Series Analysis by Box et al.
+    Time Series Analysis by Box et al.
     """
 
     # add "theta_0" = 1 to theta
@@ -47,6 +50,14 @@ def ARIMA(phi = np.array([0]), theta = np.array([0]), d = 0, t = 0, mu = 0, sigm
 
     # add unit roots
     if d != 0:
-        x[-n: ] = integrate_ARMA(ARMA = x[-n: ], d = d)
+        ARMA = x[-n: ]
+        m = ARMA.shape[0]
+        z = np.zeros((m + 1, 1)) # create temp array
+
+        for i in range(d):
+            for j in range(m):
+                z[j + 1] = ARMA[j] + z[j] 
+            ARMA = z[1: ]
+        x[-n: ] = z[1: ]
         
     return x[-n: ]
